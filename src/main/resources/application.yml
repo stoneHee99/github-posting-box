@@ -1,6 +1,6 @@
 blog:
   url: https://stonehee99.tistory.com/
-  contents-class-name: index-template
+  contents-class-name: index-template__row
   title-class-name: title
   summary-class-name: desc
   date-class-name: date
