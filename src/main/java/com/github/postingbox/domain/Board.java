@@ -19,7 +19,7 @@ public class Board {
 		this.link = link;
 		this.summary = summary;
 		this.image = FileUtil.toBufferedImage(imageUrl);
-		this.date = DateParseUtil.parse(date);
+		this.date = LocalDate.from(DateParseUtil.parse(date));
 	}
 
 	public boolean isPostedDate(LocalDate date) {
