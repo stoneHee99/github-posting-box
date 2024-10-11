@@ -41,15 +41,18 @@ public class FileUtil {
 
 	public static File resize(BufferedImage bufferedImage, String filePath, ImageSizeDto imageSize) {
 		try {
+			// 새로운 크기의 BufferedImage 생성
 			BufferedImage resizedBufferedImage = new BufferedImage(imageSize.getWidth(), imageSize.getHeight(), bufferedImage.getType());
 
+			// Graphics2D로 이미지 크기 조정
 			Graphics2D graphics = resizedBufferedImage.createGraphics();
 			graphics.drawImage(bufferedImage,
-				0, 0, imageSize.getWidth(), imageSize.getHeight(),
-				0, 0, imageSize.getWidth(), imageSize.getHeight(),
-				null);
+					0, 0, imageSize.getWidth(), imageSize.getHeight(),  // 리사이즈된 이미지 크기
+					0, 0, bufferedImage.getWidth(), bufferedImage.getHeight(),  // 원본 이미지 전체 크기
+					null);
 			graphics.dispose();
 
+			// 파일로 이미지 저장
 			File file = new File(filePath);
 			ImageIO.write(resizedBufferedImage, "png", file);
 			return file;
