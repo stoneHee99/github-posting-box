@@ -1,20 +1,32 @@
 package com.github.postingbox.utils;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class DateParseUtil {
 
 	private DateParseUtil() {
 	}
 
-	public static LocalDate parse(String text) {
-		String regex = findRegex(text);
-		String[] textArr = text.split(regex);
-		return LocalDate.of(
-			addYear(toInt(textArr[0])),
-			toInt(textArr[1]),
-			toInt(textArr[2])
+	public static LocalDateTime parse(String text) {
+		// 먼저 날짜와 시간을 분리
+		String[] dateTimeArr = text.split(" ");
+		String dateText = dateTimeArr[0]; // 날짜 부분
+		String timeText = dateTimeArr.length > 1 ? dateTimeArr[1] : "00:00"; // 시간이 없으면 00:00으로 처리
+
+		// 날짜 부분 처리
+		String regex = findRegex(dateText);
+		String[] dateArr = dateText.split(regex);
+
+		LocalDateTime dateTime = LocalDateTime.of(
+			addYear(toInt(dateArr[0])), // 연도
+			toInt(dateArr[1]),          // 월
+			toInt(dateArr[2]),          // 일
+			toInt(timeText.split(":")[0]),  // 시간
+			toInt(timeText.split(":")[1])   // 분
 		);
+
+		return dateTime;
 	}
 
 	// TODO 연도 계산 코드 다시 짜기
