@@ -46,11 +46,11 @@ public class PostingService {
     }
 
     private List<LocalDate> findPostDatesInReadme() {
-        String readme = gitHubClient.findReadme();
-        return ContentsGenerateUtil.findDates(readme).stream()
-            .map(DateParseUtil::parse)
-            .collect(Collectors.toList());
-    }
+    String readme = gitHubClient.findReadme();
+    return ContentsGenerateUtil.findDates(readme).stream()
+        .map(date -> DateParseUtil.parse(date).toLocalDate())  // LocalDateTime을 LocalDate로 변환
+        .collect(Collectors.toList());
+}
 
     private void executeGitHubApi(Boards boards, LocalDate recentPostDate) {
         String dateString = recentPostDate.format(BRANCH_NAME_FORMAT);
