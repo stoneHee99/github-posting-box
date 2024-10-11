@@ -1,5 +1,5 @@
 blog:
-  url: https://stonehee99.tistory.com/
+  url: https://stonehee99.tistory.com
   contents-class-name: index-template__row
   title-class-name: title
   summary-class-name: desc
