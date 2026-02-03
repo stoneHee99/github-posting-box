@@ -7,7 +7,9 @@
 </p>
 
 <div align = center>
-
+  
+![My Contributions](./contributions.svg)
+  
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=kiit7)](https://solved.ac/kiit7/)
 
 </div>
